@@ -9,6 +9,27 @@ export class TossPaymentGateway implements IPaymentGateway {
         this.secretKey = secretKey;
     }
 
+    async removeBillingKey(billingKey: string): Promise<void> {
+        const encryptedSecretKey = Buffer.from(`${this.secretKey}:`).toString('base64');
+
+        const response = await fetch(`https://api.tosspayments.com/v1/billing/authorizations/${billingKey}/expire`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Basic ${encryptedSecretKey}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            // If already expired or deleted, we ignore the error
+            if (errorData.code === 'ALREADY_EXPIRED_BILLING_KEY' || errorData.code === 'NOT_FOUND_BILLING_KEY') {
+                return;
+            }
+            throw new Error(`Failed to expire billing key: ${errorData.message || response.statusText}`);
+        }
+    }
+
     async confirmPayment(paymentKey: string, orderId: string, amount: number): Promise<Payment> {
         const encryptedSecretKey = Buffer.from(`${this.secretKey}:`).toString('base64');
 
@@ -61,7 +82,7 @@ export class TossPaymentGateway implements IPaymentGateway {
         return { billingKey: data.billingKey };
     }
 
-    async confirmBilling(billingKey: string, amount: number, orderId: string, orderName: string, customerEmail: string): Promise<Payment> {
+    async confirmBilling(billingKey: string, amount: number, orderId: string, orderName: string, customerEmail: string, customerKey: string): Promise<Payment> {
         const encryptedSecretKey = Buffer.from(`${this.secretKey}:`).toString('base64');
 
         const response = await fetch(`https://api.tosspayments.com/v1/billing/${billingKey}`, {
@@ -75,7 +96,7 @@ export class TossPaymentGateway implements IPaymentGateway {
                 orderId,
                 orderName,
                 customerEmail,
-                customerKey: Buffer.from(customerEmail).toString('base64').substring(0, 50), // simple unique key generation for now, ideally passed in
+                customerKey,
             }),
         });
 

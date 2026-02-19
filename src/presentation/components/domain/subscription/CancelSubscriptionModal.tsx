@@ -25,8 +25,9 @@ export function CancelSubscriptionModal({ isOpen, onClose, onConfirm }: CancelSu
 
                     <div className="flex flex-col gap-3">
                         <Button
+                            variant="danger"
                             onClick={onConfirm}
-                            className="w-full bg-red-600 hover:bg-red-700 text-white shadow-red-500/20"
+                            className="w-full"
                         >
                             Yes, Cancel Subscription
                         </Button>

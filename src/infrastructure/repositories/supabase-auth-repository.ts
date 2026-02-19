@@ -6,8 +6,9 @@ export class SupabaseAuthRepository implements IAuthRepository {
     private supabase = createClient();
 
     async signIn(email: string, password: string): Promise<User> {
-        // Mock Auth for Test Accounts (e.g., test@test.com, test1@test.com)
-        if (/^test.*@test\.com$/.test(email)) {
+        // Mock Auth for Test Accounts (e.g., test@test.com)
+        // EXCLUDING test1@test.com and test2@test.com which are now real users
+        if (/^test.*@test\.com$/.test(email) && !['test1@test.com', 'test2@test.com'].includes(email)) {
             const mockUser: User = {
                 id: `test-user-${email}`,
                 email: email,
@@ -35,7 +36,8 @@ export class SupabaseAuthRepository implements IAuthRepository {
 
     async signUp(email: string, password: string): Promise<User> {
         // Mock SignUp for Test Accounts
-        if (/^test.*@test\.com$/.test(email)) {
+        // EXCLUDING test1@test.com and test2@test.com which are now real users
+        if (/^test.*@test\.com$/.test(email) && !['test1@test.com', 'test2@test.com'].includes(email)) {
             const mockUser: User = {
                 id: `test-user-${email}`,
                 email: email,

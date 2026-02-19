@@ -14,7 +14,7 @@ import { ArrowLeft } from 'lucide-react';
 const clientKey = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY!;
 
 export default function SubscriptionPage() {
-    const { currentUser } = useUser();
+    const { currentUser, refreshProfile } = useUser();
     const tospaymentsRef = useRef<any>(null);
 
     // -- State --
@@ -47,7 +47,20 @@ export default function SubscriptionPage() {
 
     // -- Effects --
 
-    // User State Sync
+    // Fetch Payment History
+    const fetchPaymentHistory = async () => {
+        try {
+            const response = await fetch('/api/payments/history');
+            if (response.ok) {
+                const data = await response.json();
+                setPaymentHistory(data.history || []);
+            }
+        } catch (error) {
+            console.error('Failed to fetch payment history:', error);
+        }
+    };
+
+    // Initialize & Sync
     useEffect(() => {
         // Sync local subscription state with user tier
         if (currentUser.tier === 'FREE') {
@@ -58,19 +71,19 @@ export default function SubscriptionPage() {
                 amount: '$0.00',
                 interval: 'MONTHLY'
             });
-            setPaymentHistory([]);
         } else if (currentUser.tier === 'PRO') {
             setSubscription({
                 plan: 'PRO',
                 status: 'ACTIVE',
-                renewalDate: 'Oct 24, 2023',
+                renewalDate: 'Oct 24, 2023', // TODO: Fetch real subscription details
                 amount: '$10,000',
                 interval: 'MONTHLY'
             });
-            setPaymentHistory([
-                { id: 'inv_1', date: 'Sep 24, 2023', amount: '₩10,000', status: 'PAID', invoiceUrl: '#' },
-            ]);
         }
+
+        // Always fetch payment history regardless of tier
+        fetchPaymentHistory();
+
         // Sync selection state
         setSelectedPlan(currentUser.tier);
     }, [currentUser]);
@@ -125,9 +138,36 @@ export default function SubscriptionPage() {
         }
     };
 
-    const handleCancelSubscription = () => {
-        setSubscription(prev => ({ ...prev, status: 'CANCELED' }));
-        setIsCancelModalOpen(false);
+    const handleCancelSubscription = async () => {
+        try {
+            const response = await fetch('/api/subscription/cancel', {
+                method: 'POST',
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to cancel subscription');
+            }
+
+            // Immediately update UI to reflect downgrade
+            setSubscription({
+                plan: 'FREE',
+                status: 'CANCELED',
+                renewalDate: '-',
+                amount: '$0.00',
+                interval: 'MONTHLY'
+            });
+            setPaymentHistory([]);
+            setIsCancelModalOpen(false);
+
+            // Refresh global user profile to sync server state
+            await refreshProfile();
+
+            alert('구독이 성공적으로 취소되었습니다. Free 플랜으로 변경되었습니다.');
+        } catch (error) {
+            console.error('Failed to cancel subscription:', error);
+            alert('구독 취소 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+        }
     };
 
     return (
@@ -219,19 +259,20 @@ export default function SubscriptionPage() {
                             onCancel={() => setIsCancelModalOpen(true)}
                         />
 
-                        {/* Show Payment Method & History only for Paid Users */}
+                        {/* Show Payment Method for Paid Users */}
                         {currentUser.tier !== 'FREE' && (
-                            <>
-                                <PaymentMethodCard
-                                    type={paymentMethod.type}
-                                    brand={paymentMethod.brand}
-                                    last4={paymentMethod.last4}
-                                    expiry={paymentMethod.expiry}
-                                    onUpdate={() => console.log('Update Payment Method Clicked')}
-                                />
+                            <PaymentMethodCard
+                                type={paymentMethod.type}
+                                brand={paymentMethod.brand}
+                                last4={paymentMethod.last4}
+                                expiry={paymentMethod.expiry}
+                                onUpdate={() => console.log('Update Payment Method Clicked')}
+                            />
+                        )}
 
-                                <PaymentHistoryTable history={paymentHistory} />
-                            </>
+                        {/* Always show Payment History if available */}
+                        {paymentHistory.length > 0 && (
+                            <PaymentHistoryTable history={paymentHistory} />
                         )}
                     </div>
                 )}

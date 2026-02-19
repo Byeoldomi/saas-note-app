@@ -30,7 +30,7 @@ export class SupabaseSubscriptionRepository implements ISubscriptionRepository {
     async findByUserId(userId: string): Promise<Subscription | null> {
         const { data, error } = await this.supabase
             .from('subscriptions')
-            .select('*')
+            .select('*, users(email)')
             .eq('user_id', userId)
             .eq('status', 'ACTIVE')
             .single();
@@ -46,7 +46,7 @@ export class SupabaseSubscriptionRepository implements ISubscriptionRepository {
     async findDueSubscriptions(now: Date): Promise<Subscription[]> {
         const { data, error } = await this.supabase
             .from('subscriptions')
-            .select('*')
+            .select('*, users(email)')
             .eq('status', 'ACTIVE')
             .lte('next_payment_date', now.toISOString());
 
@@ -54,13 +54,17 @@ export class SupabaseSubscriptionRepository implements ISubscriptionRepository {
             throw new Error(`Failed to find due subscriptions: ${error.message}`);
         }
 
-        return data.map(this.mapToEntity);
+        return data.map((item: any) => this.mapToEntity(item));
     }
 
     private mapToEntity(data: any): Subscription {
+        // Handle joined email from users table
+        const userEmail = data.users?.email || 'unknown@example.com';
+
         return new Subscription(
             data.id,
             data.user_id,
+            userEmail,
             data.billing_key,
             data.customer_key,
             Number(data.amount),

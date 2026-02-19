@@ -1,6 +1,6 @@
 create table public.subscriptions (
   id uuid default gen_random_uuid() primary key,
-  user_id uuid not null references auth.users(id) on delete cascade,
+  user_id uuid not null references public.users(id) on delete cascade,
   billing_key text not null,
   customer_key text not null,
   amount numeric not null,

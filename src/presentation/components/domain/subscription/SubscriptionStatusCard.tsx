@@ -29,8 +29,8 @@ export function SubscriptionStatusCard({
                     <p className="text-sm text-slate-500 dark:text-slate-400">Manage your plan details</p>
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${status === 'ACTIVE' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
-                        status === 'CANCELED' ? 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400' :
-                            'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                    status === 'CANCELED' ? 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400' :
+                        'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
                     }`}>
                     {status.replace('_', ' ')}
                 </span>
@@ -56,7 +56,7 @@ export function SubscriptionStatusCard({
                     Change Plan
                 </Button>
                 {status === 'ACTIVE' && (
-                    <Button variant="secondary" onClick={onCancel} className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 border-red-200 dark:border-red-900/30">
+                    <Button variant="danger" onClick={onCancel}>
                         Cancel Subscription
                     </Button>
                 )}

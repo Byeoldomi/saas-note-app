@@ -1,11 +1,15 @@
+'use client';
+
 import Link from "next/link";
 import { Sidebar } from "@/presentation/components/layout/Sidebar";
 import { NoteCard } from "@/presentation/components/domain/note/NoteCard";
 import { Input } from "@/presentation/components/ui/Input";
 import { Button } from "@/presentation/components/ui/Button";
 import { NavbarProfile } from "@/presentation/components/layout/NavbarProfile";
+import { useUser } from '@/presentation/context/UserContext';
 
 export default function DashboardPage() {
+    const { currentUser } = useUser();
     return (
         <>
             {/* Top Bar */}
@@ -58,7 +62,7 @@ export default function DashboardPage() {
                 <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
                         <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-1">
-                            Welcome back, Alex! 👋
+                            Welcome back, {currentUser.name}! 👋
                         </h2>
                         <p className="text-slate-500 dark:text-slate-400">
                             You have 3 tasks pending and 2 notes to review.

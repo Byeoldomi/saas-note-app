@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { SupabaseUserRepository } from '../../../../../infrastructure/user/SupabaseUserRepository';
 import { TossPaymentGateway } from '../../../../../infrastructure/payment/TossPaymentGateway';
 import { SupabaseSubscriptionRepository } from '../../../../../infrastructure/payment/SupabaseSubscriptionRepository';
 import { SupabasePaymentRepository } from '../../../../../infrastructure/payment/SupabasePaymentRepository';
@@ -18,19 +20,9 @@ export async function POST(request: NextRequest) {
 
         const cookieStore = await cookies();
 
-        // Check for Test User
-        const isTestUser = cookieStore.get('is-test-user')?.value;
-
-        if (isTestUser) {
-            console.log(`[Mock] Processing billing registration for test user: ${isTestUser}`);
-            // Simulate 1s delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            return NextResponse.json({ success: true, mock: true });
-        }
-
         const supabase = createServerClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_DEFAULT_KEY!,
             {
                 cookies: {
                     getAll() {
@@ -61,17 +53,29 @@ export async function POST(request: NextRequest) {
         const secretKey = process.env.TOSS_PAYMENTS_SECRET_KEY!;
         const gateway = new TossPaymentGateway(secretKey);
 
-        // Use service role client for repository operations if regular client has RLS issues with some tables?
-        // But here we are inserting subscription for self, so RLS should be fine with user context.
-        // However, if we need to do admin stuff, we might need service role.
-        // For now, let's use the authenticated client.
-        const subscriptionRepo = new SupabaseSubscriptionRepository(supabase);
-        const paymentRepo = new SupabasePaymentRepository(supabase);
+        // Initialize Admin Client to bypass RLS for internal operations (subscriptions, tier update)
+        const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+        if (!url || !serviceKey) {
+            throw new Error('Missing Supabase URL or Service Role Key in environment variables.');
+        }
+
+        const supabaseAdmin = createAdminClient(
+            url,
+            serviceKey,
+            { auth: { persistSession: false } }
+        );
+
+        const subscriptionRepo = new SupabaseSubscriptionRepository(supabaseAdmin as any);
+        const paymentRepo = new SupabasePaymentRepository(supabaseAdmin as any);
+        const userRepo = new SupabaseUserRepository(supabaseAdmin as any);
 
         const processPaymentUseCase = new ProcessScheduledPaymentUseCase(
             subscriptionRepo,
             gateway,
-            paymentRepo
+            paymentRepo,
+            userRepo
         );
 
         const registerBillingUseCase = new RegisterBillingMethodUseCase(
@@ -80,7 +84,9 @@ export async function POST(request: NextRequest) {
             processPaymentUseCase
         );
 
-        await registerBillingUseCase.execute(authKey, customerKey, user.id, Number(amount));
+        console.log(`[API] Registering billing for user: ${user.id}, email: ${user.email}`);
+        await registerBillingUseCase.execute(authKey, customerKey, user.id, Number(amount), user.email!);
+        console.log(`[API] Billing registration successful for user: ${user.id}`);
 
         return NextResponse.json({ success: true });
 

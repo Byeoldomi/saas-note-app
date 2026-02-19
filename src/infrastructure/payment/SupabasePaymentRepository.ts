@@ -51,4 +51,28 @@ export class SupabasePaymentRepository implements IPaymentRepository {
             data.updated_at ? new Date(data.updated_at) : undefined
         );
     }
+
+    async findByUserId(userId: string): Promise<Payment[]> {
+        const { data, error } = await this.supabase
+            .from('payments')
+            .select('*')
+            .eq('user_id', userId)
+            .order('approved_at', { ascending: false });
+
+        if (error) {
+            throw new Error(`Failed to find payments for user: ${error.message}`);
+        }
+
+        return data.map((item: any) => new Payment(
+            item.payment_key,
+            item.order_id,
+            item.amount,
+            item.status,
+            item.user_id,
+            item.fail_reason,
+            item.approved_at,
+            item.created_at ? new Date(item.created_at) : undefined,
+            item.updated_at ? new Date(item.updated_at) : undefined
+        ));
+    }
 }

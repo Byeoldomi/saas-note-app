@@ -11,7 +11,7 @@ export class RegisterBillingMethodUseCase {
         private processScheduledPaymentUseCase: ProcessScheduledPaymentUseCase
     ) { }
 
-    async execute(authKey: string, customerKey: string, userId: string, amount: number): Promise<void> {
+    async execute(authKey: string, customerKey: string, userId: string, amount: number, email: string): Promise<void> {
         // 1. Issue Billing Key
         const { billingKey } = await this.paymentGateway.issueBillingKey(authKey, customerKey);
 
@@ -24,6 +24,7 @@ export class RegisterBillingMethodUseCase {
         const subscription = new Subscription(
             randomUUID(), // Assume global crypto or uuid import. modifying later if needed
             userId,
+            email,
             billingKey,
             customerKey,
             amount,
@@ -37,6 +38,6 @@ export class RegisterBillingMethodUseCase {
         await this.subscriptionRepository.save(subscription);
 
         // 4. Process First Payment
-        await this.processScheduledPaymentUseCase.executeForSubscription(subscription);
+        await this.processScheduledPaymentUseCase.executeForSubscription(subscription, email);
     }
 }

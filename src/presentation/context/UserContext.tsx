@@ -19,16 +19,27 @@ export interface UserProfile {
 // Keep mocks for fallback or dev/test without auth
 export const MOCK_USERS: UserProfile[] = [
     {
-        id: 'user_1',
-        name: 'Alex Morgan',
-        email: 'alex@example.com',
-        role: 'Pro Member',
-        avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDtXT-ovtzCbaboop3dNJK2CzoUC3UzAsi2afoYPBn2ctR182I8r3x9PaXS7MQIJdHKrFRVP_TYJyGnLtMK5Q_JxiLbEpVf_0TQOTWwvAI2Xq3yOYLxRM_P_tmvQETVSDEdBlysCZnQHKCOHiLI7U0CrxDBXlVJ0bNZBbIzgzhKEf5WSQk0Ojy072z3-NnDOVyBDJ-PrD-begxVIWx4ZCugNo7WJt-1H1UY6WK_vZSq4ykv67W488wl8pbU7zUkzTlhBeDlTYSvyNA',
-        initials: 'AM',
-        tier: 'PRO',
-        storageUsage: 3500000000,
-        storageLimit: 107374182400
+        id: 'user_test1',
+        name: 'Test User 1',
+        email: 'test1@test.com',
+        role: 'Member',
+        avatarUrl: '',
+        initials: 'T1',
+        tier: 'FREE',
+        storageUsage: 0,
+        storageLimit: 10737418240
     },
+    {
+        id: 'user_test2',
+        name: 'Test User 2',
+        email: 'test2@test.com',
+        role: 'Pro Member',
+        avatarUrl: '',
+        initials: 'T2',
+        tier: 'PRO',
+        storageUsage: 0,
+        storageLimit: 107374182400
+    }
     // ... other mocks can remain if needed for testing
 ];
 

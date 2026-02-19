@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/infrastructure/config/supabase.server';
+import { createClient } from '@/utils/supabase/supabase-server';
 import { FailPaymentUseCase } from '@/application/use-cases/payment/FailPayment.usecase';
 import { SupabasePaymentRepository } from '@/infrastructure/payment/SupabasePaymentRepository';
 

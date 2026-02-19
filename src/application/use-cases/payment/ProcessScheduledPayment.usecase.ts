@@ -1,11 +1,11 @@
 import { toZonedTime, fromZonedTime } from 'date-fns-tz';
 import { endOfDay, startOfDay, addMonths } from 'date-fns';
-import { ISubscriptionRepository } from '../../domain/payment/subscription.repository.interface';
-import { IPaymentGateway } from '../../domain/payment/payment.gateway.interface';
-import { IPaymentRepository } from '../../domain/payment/payment.repository.interface';
-import { IUserRepository } from '../../domain/user/user.repository.interface';
-import { Payment } from '../../domain/payment/payment.entity';
-import { Subscription } from '../../domain/payment/subscription.entity';
+import { ISubscriptionRepository } from '../../../domain/payment/subscription.repository.interface';
+import { IPaymentGateway } from '../../../domain/payment/payment.gateway.interface';
+import { IPaymentRepository } from '../../../domain/payment/payment.repository.interface';
+import { IUserRepository } from '../../../domain/user/user.repository.interface';
+import { Payment } from '../../../domain/payment/payment.entity';
+import { Subscription } from '../../../domain/payment/subscription.entity';
 
 const TIMEZONE = 'Asia/Seoul';
 

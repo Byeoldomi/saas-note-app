@@ -1,0 +1,14 @@
+src/app/(private)/note/[id]/page.test.tsx(14,36): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'Promise<{ id: string; }>'.
+src/domain/payment/permission.test.ts(49,33): error TS2554: Expected 3 arguments, but got 2.
+src/domain/payment/permission.test.ts(68,26): error TS2339: Property 'confirmPayment' does not exist on type 'IPaymentRepository'.
+src/domain/payment/permission.test.ts(72,32): error TS2339: Property 'confirmPayment' does not exist on type 'IPaymentRepository'.
+src/infrastructure/user/SupabaseUserRepository.ts(24,18): error TS2339: Property 'id' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(25,18): error TS2339: Property 'email' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(26,18): error TS2339: Property 'full_name' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(27,18): error TS2339: Property 'avatar_url' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(28,18): error TS2339: Property 'is_pro' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(29,18): error TS2339: Property 'storage_usage' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(30,18): error TS2339: Property 'storage_limit' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(31,27): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(32,27): error TS2339: Property 'updated_at' does not exist on type 'never'.
+src/infrastructure/user/SupabaseUserRepository.ts(39,21): error TS2345: Argument of type '{ is_pro: boolean; storage_limit: number; }' is not assignable to parameter of type 'never'.

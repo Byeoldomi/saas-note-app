@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Plans - SaaS Note-taking</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200 antialiased min-h-screen flex flex-col">
+<nav class="w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white font-bold text-xl">C</div>
+<span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">CloudNote</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Features</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Enterprise</a>
+<a class="text-sm font-medium text-primary transition-colors" href="#">Pricing</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-sm font-medium hover:text-primary hidden sm:block" href="#">Log in</a>
+<a class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded text-sm font-medium transition-colors shadow-lg shadow-primary/20" href="#">Sign up</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow">
+<section class="pt-20 pb-12 px-4 text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">
+                Simple, transparent pricing
+            </h1>
+<p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+                Start organizing your thoughts today. Upgrade as you grow. No hidden fees, ever.
+            </p>
+<div class="flex items-center justify-center gap-4 mb-8">
+<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">Monthly</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Yearly <span class="text-primary text-xs ml-1 bg-primary/10 px-2 py-0.5 rounded-full">-20%</span></span>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-primary/30 transition-all duration-300 relative group">
+<div class="mb-6">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Free</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-2">For personal organization and quick notes.</p>
+</div>
+<div class="mb-6 flex items-baseline gap-1">
+<span class="text-4xl font-extrabold text-slate-900 dark:text-white">$0</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">/month</span>
+</div>
+<a class="block w-full py-3 px-4 bg-primary/10 hover:bg-primary/20 text-primary font-bold text-center rounded-lg transition-colors mb-8" href="#">
+                        Get Started
+                    </a>
+<ul class="space-y-4">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Unlimited notes</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Sync up to 1 device</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Basic formatting tools</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300 opacity-50">
+<span class="material-icons text-slate-400 text-lg mt-0.5">cancel</span>
+<span class="line-through decoration-slate-400">AI summarization</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300 opacity-50">
+<span class="material-icons text-slate-400 text-lg mt-0.5">cancel</span>
+<span class="line-through decoration-slate-400">Collaborative workspaces</span>
+</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl p-8 border-2 border-primary shadow-xl shadow-primary/10 relative transform md:-translate-y-4 z-10">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-sm">
+                        Most Popular
+                    </div>
+<div class="mb-6">
+<h3 class="text-xl font-bold text-primary">Pro</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-2">For power users who need advanced organization.</p>
+</div>
+<div class="mb-6 flex items-baseline gap-1">
+<span class="text-5xl font-extrabold text-slate-900 dark:text-white">$8</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">/month</span>
+</div>
+<a class="block w-full py-3 px-4 bg-primary hover:bg-primary/90 text-white font-bold text-center rounded-lg transition-all shadow-lg shadow-primary/30 mb-8 transform active:scale-95" href="#">
+                        Upgrade to Pro
+                    </a>
+<ul class="space-y-4">
+<li class="flex items-start gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Everything in Free</span>
+</li>
+<li class="flex items-start gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Unlimited devices</span>
+</li>
+<li class="flex items-start gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>AI-powered summaries</span>
+</li>
+<li class="flex items-start gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Collaboration tools (up to 5 users)</span>
+</li>
+<li class="flex items-start gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Version history (30 days)</span>
+</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-primary/30 transition-all duration-300">
+<div class="mb-6">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Enterprise</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-2">For large teams requiring control and security.</p>
+</div>
+<div class="mb-6 flex items-baseline gap-1">
+<span class="text-4xl font-extrabold text-slate-900 dark:text-white">Custom</span>
+</div>
+<a class="block w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-center rounded-lg transition-colors mb-8 border border-slate-200 dark:border-slate-700" href="#">
+                        Contact Sales
+                    </a>
+<ul class="space-y-4">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Everything in Pro</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>SSO &amp; Advanced Security</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Dedicated Success Manager</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Audit logs &amp; Analytics</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons text-primary text-lg mt-0.5">check_circle</span>
+<span>Unlimited Version History</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-8">Trusted by teams at</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-300">
+<span class="material-icons text-3xl">token</span> ACME Corp
+                    </div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-300">
+<span class="material-icons text-3xl">diamond</span> Gemstone
+                    </div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-300">
+<span class="material-icons text-3xl">rocket_launch</span> Starfleet
+                    </div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-300">
+<span class="material-icons text-3xl">bolt</span> Volt Inc
+                    </div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-300">
+<span class="material-icons text-3xl">forest</span> Canopy
+                    </div>
+</div>
+</div>
+</section>
+<section class="py-20 px-4">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-12">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<div class="bg-white dark:bg-slate-900 rounded-lg p-6 border border-slate-200 dark:border-slate-800">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Can I switch plans later?</h3>
+<p class="text-slate-600 dark:text-slate-300">Absolutely. You can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg p-6 border border-slate-200 dark:border-slate-800">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Is my data secure?</h3>
+<p class="text-slate-600 dark:text-slate-300">Yes, we use industry-standard encryption for data in transit and at rest. Your notes are private and only accessible by you.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg p-6 border border-slate-200 dark:border-slate-800">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Do you offer a student discount?</h3>
+<p class="text-slate-600 dark:text-slate-300">Yes! Students with a valid .edu email address get 50% off the Pro plan. Contact our support team to apply.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white font-bold text-xs">C</div>
+<span class="font-bold text-lg text-slate-900 dark:text-white">CloudNote</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                        Organize your life, one note at a time.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Product</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Features</a></li>
+<li><a class="hover:text-primary" href="#">Integrations</a></li>
+<li><a class="hover:text-primary" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Company</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Careers</a></li>
+<li><a class="hover:text-primary" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary" href="#">Status</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+                © 2023 CloudNote Inc. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

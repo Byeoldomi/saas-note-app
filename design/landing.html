@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CloudNote - Cloud Note Taking SaaS</title>
+<meta content="Capture thoughts, organize life. The fastest way to sync your notes across all devices." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0e4ac2",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(19, 91, 236, 0.3)'
+                    }
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/20 selection:text-primary">
+<nav class="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/80 dark:bg-background-dark/80 border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-glow group-hover:scale-105 transition-transform">
+<span class="material-icons-outlined text-xl">edit_note</span>
+</div>
+<span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-primary transition-colors">CloudNote</span>
+</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#features">Features</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#solutions">Solutions</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#pricing">Pricing</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#blog">Blog</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<a class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" href="#">Log in</a>
+<a class="px-5 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-hover rounded-lg shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5" href="#">
+                        Get Started
+                    </a>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-slate-600 dark:text-slate-300 hover:text-primary focus:outline-none">
+<span class="material-icons-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative pt-20 pb-32 overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
+<div class="absolute top-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-screen opacity-70 animate-blob"></div>
+<div class="absolute top-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-screen opacity-70 animate-blob animation-delay-2000"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-8 border border-primary/20">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                New: AI Assistant for summarization
+            </div>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
+                Capture thoughts, <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">organize life.</span>
+</h1>
+<p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed">
+                The fastest way to sync your ideas across all devices. Experience a clutter-free workspace designed for focused thinking and seamless collaboration.
+            </p>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+<a class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-xl shadow-primary/25 transition-all transform hover:-translate-y-1" href="#">
+                    Start Taking Notes Free
+                </a>
+<a class="w-full sm:w-auto px-8 py-4 text-base font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all flex items-center justify-center gap-2 group" href="#">
+<span class="material-icons-outlined group-hover:text-primary transition-colors">play_circle</span>
+                    Watch Demo
+                </a>
+</div>
+<div class="relative mx-auto max-w-5xl">
+<div class="relative rounded-2xl bg-slate-900/5 dark:bg-white/5 p-2 ring-1 ring-inset ring-slate-900/10 dark:ring-white/10 lg:rounded-3xl lg:p-3 shadow-2xl backdrop-blur-sm">
+<div class="rounded-xl lg:rounded-2xl overflow-hidden bg-white dark:bg-slate-900 shadow-inner">
+<div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-red-400"></div>
+<div class="w-3 h-3 rounded-full bg-amber-400"></div>
+<div class="w-3 h-3 rounded-full bg-green-400"></div>
+</div>
+<div class="mx-auto text-xs font-medium text-slate-400">CloudNote — My Ideas</div>
+</div>
+<img alt="Screenshot of a clean, modern note taking application interface with a sidebar and main editor showing text and images" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" data-alt="Modern note taking app interface dashboard screenshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwsv7WMEvJqIoCxhU6jKzFfZnG-MlEmCIwWsDIzT7ianPhBSGJPO4RL99znCc4XRdMKVzYjeqyJH8uk2PzFNkBpVHbJqHs04P59wUH6WCI9-BWRtRlQVTaa3qiXfyU-Ji7EfXBimK9opFBVo4_3UEytRz1Lo_bSPOckoT7XOMtse9iHq-OxMkHW_nWuGQxz4wznST39zlomB9XmqI5MtTU8D1Y-m93fvuGvo4bg94pM859Dq7_YzyF4QMQb3KDfILdKUcqAtRQmLM"/>
+</div>
+</div>
+<div class="absolute -right-12 top-20 hidden lg:block animate-bounce" style="animation-duration: 3s;">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-soft border border-slate-100 dark:border-slate-700 flex items-center gap-3 max-w-[200px]">
+<div class="p-2 bg-green-100 text-green-600 rounded-lg">
+<span class="material-icons-outlined text-xl">check_circle</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Status</p>
+<p class="text-sm font-bold text-slate-800 dark:text-white">Synced just now</p>
+</div>
+</div>
+</div>
+<div class="absolute -left-12 bottom-20 hidden lg:block animate-bounce" style="animation-duration: 4s;">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-soft border border-slate-100 dark:border-slate-700 flex items-center gap-3">
+<div class="flex -space-x-2">
+<img alt="User avatar 1" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800" data-alt="Small circular avatar of a smiling user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMm38OOFk5jXK7n5axNPdmTVjZ9DpjAJ7HAp0OW22ZcLZg9Qt_XY1cJSWXRqa1j3FwjnLmwJadC7_245US3kPcPu8o-abEbcMAhtBdJpgU0loHrDgVlI0ildIehKIi68FDtfJfsaJfIQu0_cxeyMU3lt8mBfqOwn1cTr_hLCEea_rREGTrQ-DPkMpApcTeVyEMmoFHGcbFG9xtByRNGSdP4vY6ye3AdUAQ_8f6sHBSO3G0zbQ0LIk51bT-RnJYiXG8b5za49CiJqw"/>
+<img alt="User avatar 2" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800" data-alt="Small circular avatar of another user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1jxhQlQjajK14o28BBJeSaR6LgHbsaCQGQBTc_TTmd-QwUtf3YOi5oiSRwrwnHDhoA0kwa2RsT2qcwxw3-_xovFdKRoFtbo4BKLBUwz0af1LtOfiqiTbAB4UgnPrLtzQl2TzJsg5Lwju6L0auuOXG3eBK32lcuqd9rT-qyZ4Uznn9hlrBH3ZDhJCAu2jdNhU8DkyfzmVV6a9AYN24Pu8m3qBIsaC7zDItnH68607uPDApKyQCPqiqS6gQsTCvzViWPacua-1fuXw"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-white">Team Shared</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-10 border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-8">Trusted by creative teams at</p>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200"><span class="material-icons-outlined text-3xl">token</span> Acme Corp</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200"><span class="material-icons-outlined text-3xl">diamond</span> GemStone</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200"><span class="material-icons-outlined text-3xl">bolt</span> FlashInc</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200"><span class="material-icons-outlined text-3xl">hub</span> Networkia</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200"><span class="material-icons-outlined text-3xl">rocket_launch</span> StarLine</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark relative" id="features">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-20">
+<h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Core Capabilities</h2>
+<h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6">Designed for the modern mind.</h3>
+<p class="text-lg text-slate-600 dark:text-slate-300">Everything you need to capture ideas quickly and organize them effectively, without the clutter.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group relative p-8 bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-soft">
+<div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-outlined text-6xl text-primary -rotate-12 transform group-hover:rotate-0 transition-transform duration-500">sync</span>
+</div>
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-icons-outlined text-3xl">cloud_sync</span>
+</div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Real-time Sync</h4>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Never lose a thought. Your notes update instantly across your desktop, tablet, and mobile devices as soon as you type.
+                    </p>
+</div>
+<div class="group relative p-8 bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-soft">
+<div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-outlined text-6xl text-primary -rotate-12 transform group-hover:rotate-0 transition-transform duration-500">lock</span>
+</div>
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-icons-outlined text-3xl">shield</span>
+</div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Secure Storage</h4>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Your privacy is our priority. End-to-end encryption ensures that only you can access and read your private thoughts.
+                    </p>
+</div>
+<div class="group relative p-8 bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-soft">
+<div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-outlined text-6xl text-primary -rotate-12 transform group-hover:rotate-0 transition-transform duration-500">auto_awesome</span>
+</div>
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-icons-outlined text-3xl">sell</span>
+</div>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Smart Organization</h4>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Stop sorting manually. Our AI automatically suggests tags and folders based on your content context.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 order-2 lg:order-1">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 group">
+<img alt="Close up of hands typing on a laptop showing a clean workspace environment" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Person typing on laptop in a bright modern workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiNYZ-Hbg0ZNGJW3xyhOkJCeacFltYGsfh02FDzfj2Kdk9yr2Zz0i08EdxDAJ357lVZBJE4wa2tLSwoeLfZH_05IRlHcOhvCnoYo8T3sRwXnacX0HMkqQvGRGnHHzJM5yeu3OmVln20hTraQSr1AI6x4QtGRZXalhuL5VmQG1lbGfZK5kAwXeiFk5U7Yt3OE9HnmsUrJZ9eQRZhNbEhimFXqN5B1DqQZFJj2IqrTVbT67ncpSGnKv6tD4qK9q93yzLDpSlRSsUenY"/>
+<div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur p-4 rounded-xl shadow-lg border border-white/20">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-icons-outlined text-primary">search</span>
+<div class="h-2 w-32 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+<div class="h-2 w-2/3 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 order-1 lg:order-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-semibold mb-6">
+<span class="material-icons-outlined text-sm">bolt</span>
+                        Lightning Fast Search
+                    </div>
+<h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6">Find anything, instantly.</h3>
+<p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                        Don't waste time scrolling. Our powerful search engine indexes not just text, but images and handwritten notes too. Retrieve that one brilliant idea from three years ago in milliseconds.
+                    </p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-icons-outlined text-primary mt-1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">OCR technology for image search</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-icons-outlined text-primary mt-1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Advanced filtering by date, tag, or color</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-icons-outlined text-primary mt-1">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">Keyboard shortcuts for power users</span>
+</li>
+</ul>
+<a class="text-primary font-bold hover:text-primary-hover inline-flex items-center gap-1 group" href="#">
+                        Learn more about search
+                        <span class="material-icons-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-primary text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<span class="material-icons-outlined text-6xl text-white/30 mb-8">format_quote</span>
+<h3 class="text-2xl md:text-4xl font-bold leading-normal mb-10">
+                "CloudNote completely changed how I manage my projects. It’s the perfect balance between simplicity and power. I can't imagine my workflow without it."
+            </h3>
+<div class="flex items-center justify-center gap-4">
+<img alt="Sarah Jenkins portrait" class="w-14 h-14 rounded-full border-2 border-white/50" data-alt="Portrait of a professional woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHmOUd47msltyawhbp3y-Yi7crHUI32fvxsZ8qUunAO3gAEIzRZJ25TUh2tsGWNiYO4Bw4ZigBvyPjQID7nGfWZ-2OrvZhONa_Lb82SywhflAIqH3Os3Q9o8HQl7DyPuQLku96y_XxqACYx7zIg66JSATBzqE5g1Q9t2xz324tMLkhRgRID3-DlHPRr_jmVHgQAmzHQ8geKbos9Otm_MqW2XjyYKi1txaQ-YrN4vmL0ogjmj9pmJnetNDNfmVXZu6MZ-diQtqPMcY"/>
+<div class="text-left">
+<p class="font-bold text-lg">Sarah Jenkins</p>
+<p class="text-white/80 text-sm">Product Manager at TechFlow</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Ready to clear your mind?</h2>
+<p class="text-xl text-slate-600 dark:text-slate-300 mb-10">
+                Join 100,000+ thinkers, creators, and doers. Start your free trial today. No credit card required.
+            </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<a class="px-8 py-4 text-lg font-bold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-xl shadow-primary/25 transition-all transform hover:-translate-y-1" href="#">
+                    Get Started for Free
+                </a>
+<a class="px-8 py-4 text-lg font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors" href="#">
+                    View Pricing
+                </a>
+</div>
+<p class="mt-6 text-sm text-slate-500">Free 14-day trial on Pro plans. Cancel anytime.</p>
+</div>
+</section>
+<footer class="bg-slate-50 dark:bg-[#0b101a] pt-16 pb-8 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="col-span-2 lg:col-span-2 pr-8">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white text-xs">
+<span class="material-icons-outlined text-sm">edit_note</span>
+</div>
+<span class="font-bold text-lg text-slate-900 dark:text-white">CloudNote</span>
+</div>
+<p class="text-slate-500 text-sm mb-6 max-w-xs">
+                        The thoughtful note-taking app designed for focus and clarity. Build your second brain today.
+                    </p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-icons-outlined">facebook</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-icons-outlined">tag</span></a> 
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-icons-outlined">videocam</span></a> 
+</div>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Product</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Integrations</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Changelog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Docs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Company</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Legal</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-slate-500">© 2023 CloudNote Inc. All rights reserved.</p>
+<div class="flex items-center gap-2 text-sm text-slate-500">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    System Operational
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

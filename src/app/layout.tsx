@@ -10,8 +10,37 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "CloudNote - Authentication",
-  description: "Capture thoughts, organize life.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  title: {
+    default: "CloudNote - 생각을 포착하고, 삶을 정리하라",
+    template: "%s | CloudNote",
+  },
+  description: "모든 기기에서 노트를 동기화하는 가장 빠른 방법. AI 기반 요약 및 정리 기능을 갖춘 깔끔한 작업 공간을 제공합니다.",
+  openGraph: {
+    title: "CloudNote - 생각을 포착하고, 삶을 정리하라",
+    description: "모든 기기에서 노트를 동기화하는 가장 빠른 방법. AI 기반 요약 및 정리 기능을 갖춘 깔끔한 작업 공간을 제공합니다.",
+    url: "/",
+    siteName: "CloudNote",
+    locale: "ko_KR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CloudNote Dashboard Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CloudNote - 생각을 포착하고, 삶을 정리하라",
+    description: "모든 기기에서 노트를 동기화하는 가장 빠른 방법. AI 기반 요약 및 정리 기능을 갖춘 깔끔한 작업 공간을 제공합니다.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
